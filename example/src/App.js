@@ -1,10 +1,10 @@
 import React from 'react'
-import { ExampleComponent } from 'react-table-modal'
+import { DataTable } from 'react-table-modal'
 import 'react-table-modal/dist/index.css'
 
 const App = () => {
   return (
-    <ExampleComponent
+    <DataTable
       theme="blue"
       editButton={true}
       editField={["name", "family", "retired"]}
