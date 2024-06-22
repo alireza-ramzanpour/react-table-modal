@@ -91,38 +91,41 @@ export const DataTable = (props) => {
       </table>
       {modalIsOpen &&
         <div className={styles.modal}>
-          <h2>Enter the field</h2>
-          <form>
-            {props.editField.map((field, index) => (
-              editingData.map((item) => {
-                if (item[field] == "Yes" || item[field] == "No") {
-                  return (
-                    <div >
+          <div className={styles.modalBackground}></div>
+          <div className={styles.modalContent}>
+            <h2>Enter the field</h2>
+            <form>
+              {props.editField.map((field, index) => (
+                editingData.map((item) => {
+                  if (item[field] == "Yes" || item[field] == "No") {
+                    return (
+                      <div >
+                        <input
+                          type="checkbox"
+                          ref={(element) => fieldRefs.current[index] = element}
+                          defaultChecked={item[field] == 'Yes' ? true : false}
+                        />
+                        <span>{field}</span>
+                      </div>
+                    )
+                  } else {
+                    return (
                       <input
-                        type="checkbox"
+                        type="text"
                         ref={(element) => fieldRefs.current[index] = element}
-                        defaultChecked={item[field] == 'Yes' ? true : false}
+                        className={styles.modalInput}
+                        defaultValue={item[field]}
                       />
-                      <span>{field}</span>
-                    </div>
-                  )
-                } else {
-                  return (
-                    <input
-                      type="text"
-                      ref={(element) => fieldRefs.current[index] = element}
-                      className={styles.modalInput}
-                      defaultValue={item[field]}
-                    />
-                  )
-                }
-              })
-            ))}
-            <div className={styles.buttonWrapper}>
-              <input type="button" className={`${styles.customButton} ${styles.okBtn}`} value="Ok" onClick={handleEditingData} />
-              <input type="button" className={`${styles.customButton} ${styles.cancelBtn}`} value="Cancel" onClick={closeModal} />
-            </div>
-          </form>
+                    )
+                  }
+                })
+              ))}
+              <div className={styles.buttonWrapper}>
+                <input type="button" className={`${styles.customButton} ${styles.okBtn}`} value="Ok" onClick={handleEditingData} />
+                <input type="button" className={`${styles.customButton} ${styles.cancelBtn}`} value="Cancel" onClick={closeModal} />
+              </div>
+            </form>
+          </div>
         </div>
       }
     </div>
