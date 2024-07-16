@@ -66,16 +66,63 @@ export default App
 
 ```
 
-## Atributes
 
-|name| type | discription
-|---|---| --- |
-| theme | string | This feature sets the table color theme. 
-|  editButton | boolean | Enabling this feature adds an edit button to each row.
-|  editField | array |Specifies the editable fields.
-|  deleteButton | boolean | Ability to add a delete button to each row of the table.
-|  cols | array | Specifies the columns to be displayed in the table.
-|  data | array | A complex of data.
+## Attributes
+
+| Name         | Type   | Description                                           |
+|--------------|--------|-------------------------------------------------------|
+| theme        | string | This feature sets the table color theme.              |
+| editButton   | boolean| Enabling this feature adds an edit button to each row.|
+| editField    | array  | Specifies the editable fields.                         |
+| deleteButton | boolean| Ability to add a delete button to each row of the table.|
+| cols         | array  | Specifies the columns to be displayed in the table.    |
+| rowsPerPage  | object | The table displays the number of rows per page.        |
+| data         | array  | A collection of data.                                 |
+
+
+## DataTable
+
+The DataTable component is used to display tabular data with specific features.
+
+### Features
+
+* [Theme Examples](#theme-examples)
+
+
+### Theme Examples
+
+Below are examples of the available themes along with their respective class names and images:
+
+#### Default Theme
+
+```jsx
+<DataTable theme="default" ... />
+```
+<img src="./src/assets/images/default.png" alt="default-theme" width="300" height="200">
+
+
+#### Blue Theme
+
+```jsx
+<DataTable theme="blue" ... />
+```
+<img src="./src/assets/images/blue.png" alt="blue-theme" width="300" height="200">
+
+
+#### Red Theme
+
+```jsx
+<DataTable theme="red" ... />
+```
+<img src="./src/assets/images/red.png" alt="red-theme" width="300" height="200">
+
+
+#### Green Theme
+
+```jsx
+<DataTable theme="green" ... />
+```
+<img src="./src/assets/images/green.png" alt="green-theme" width="300" height="200">
 
 
 ## License

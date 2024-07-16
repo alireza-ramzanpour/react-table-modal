@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from './styles.module.css'
+import { FaTrash } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
+import styles from './styles.module.css';
 
 export const DataTable = (props) => {
 
@@ -7,6 +9,18 @@ export const DataTable = (props) => {
   const [data, setData] = useState([])
   const [editingData, setEditingData] = useState([]);
   const fieldRefs = useRef([])
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(data.length / props.rowsPerPage);
+  const startIndex = (currentPage - 1) * props.rowsPerPage;
+  const endIndex = startIndex + props.rowsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   useEffect(() => {
     setCols(props.cols)
@@ -48,47 +62,72 @@ export const DataTable = (props) => {
   // Modal Codes
 
   return (
-    <div>
-      <table className={props.theme}>
-        <thead>
+    <div className={`${styles[props.theme]} ${styles.tableHolder}`}>
+      <table>
+        <thead className={styles.tableRowHeader}>
           <tr className={styles.headRow}>
             {
               cols.map((col) => (
-                <th>{col}</th>
+                <th className={styles.tableHeader}>{col}</th>
               ))
             }
-            {props.deleteButton && <th>Delete</th>}
-            {props.editButton && <th>Edit</th>}
+            <th className={styles.tableHeader}>operation</th>
           </tr>
         </thead>
         <tbody>
           {
-            data.map((d, index) => (
-              <tr key={index} className={styles.contentRow}>
+            currentData.map((d, index) => (
+              <tr key={index} className={styles.tableRowItems}>
                 {
                   cols.map((col) => (
-                    <td>{d[col]}</td>
+                    <td className={styles.tableCell}>{d[col]}</td>
                   ))
                 }
-                {props.deleteButton &&
-                  <td>
-                    <input type="button" value='delete' className={styles.deleteBtn} onClick={() => {
+                <td className={styles.buttonWrapper}>
+                  {props.deleteButton &&
+                    <FaTrash className={`${styles.deleteBtn} ${styles.icon} `} onClick={() => {
                       const newData = [...data.slice(0, index), ...data.slice(index + 1)];
                       setData(newData);
                     }} />
-                  </td>
-                }
-                {
-                  props.editButton &&
-                  <td>
-                    <input type="button" className={styles.tableBtn} value="edit" onClick={() => openModal({ ...d, index })} />
-                  </td>
-                }
+                  }
+                  {
+                    props.editButton &&
+                    <FaEdit className={`${styles.tableBtn} ${styles.icon} `} onClick={() => openModal({ ...d, index })} />
+                  }
+                </td>
               </tr>
             ))
           }
         </tbody>
       </table>
+      <div className={styles.tableFooter}>
+
+        {Array.from({ length: totalPages }, (_, index) => {
+          const pageNumber = index + 1;
+          if (
+            pageNumber == 1 ||
+            pageNumber == totalPages ||
+            (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
+          ) {
+            return (
+              <div
+                className={`${styles.button} ${pageNumber == currentPage ? styles.activeButton : styles.inactiveButton} `}
+                onClick={() => handlePageChange(pageNumber)}
+              >
+                {pageNumber}
+              </div>
+            )
+          } else if (
+            pageNumber == 2 ||
+            pageNumber == totalPages - 1
+          ) {
+            return (
+              <div className={styles.dotButton}>...</div>
+            )
+          }
+        })}
+      </div>
+
       {modalIsOpen &&
         <div className={styles.modal}>
           <div className={styles.modalBackground}></div>
@@ -113,7 +152,7 @@ export const DataTable = (props) => {
                       <input
                         type="text"
                         ref={(element) => fieldRefs.current[index] = element}
-                        className={styles.modalInput}
+                        className={styles[field]}
                         defaultValue={item[field]}
                       />
                     )
@@ -121,8 +160,8 @@ export const DataTable = (props) => {
                 })
               ))}
               <div className={styles.buttonWrapper}>
-                <input type="button" className={`${styles.customButton} ${styles.okBtn}`} value="Ok" onClick={handleEditingData} />
-                <input type="button" className={`${styles.customButton} ${styles.cancelBtn}`} value="Cancel" onClick={closeModal} />
+                <input type="button" className={`${styles.customButton} ${styles.okBtn} `} value="Ok" onClick={handleEditingData} />
+                <input type="button" className={`${styles.customButton} ${styles.cancelBtn} `} value="Cancel" onClick={closeModal} />
               </div>
             </form>
           </div>
