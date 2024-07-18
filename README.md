@@ -98,7 +98,7 @@ Below are examples of the available themes along with their respective class nam
 ```jsx
 <DataTable theme="default" ... />
 ```
-<img src="./src/assets/images/default.png" alt="default-theme" width="300" height="200">
+<img src="https://s8.uupload.ir/files/default_5g30.png" alt="default-theme" width="300" height="200">
 
 
 #### Blue Theme
@@ -106,7 +106,7 @@ Below are examples of the available themes along with their respective class nam
 ```jsx
 <DataTable theme="blue" ... />
 ```
-<img src="./src/assets/images/blue.png" alt="blue-theme" width="300" height="200">
+<img src="https://s8.uupload.ir/files/blue_q4ph.png" alt="blue-theme" width="300" height="200">
 
 
 #### Red Theme
@@ -114,7 +114,7 @@ Below are examples of the available themes along with their respective class nam
 ```jsx
 <DataTable theme="red" ... />
 ```
-<img src="./src/assets/images/red.png" alt="red-theme" width="300" height="200">
+<img src="https://s8.uupload.ir/files/red_4eg7.png" alt="red-theme" width="300" height="200">
 
 
 #### Green Theme
@@ -122,7 +122,7 @@ Below are examples of the available themes along with their respective class nam
 ```jsx
 <DataTable theme="green" ... />
 ```
-<img src="./src/assets/images/green.png" alt="green-theme" width="300" height="200">
+<img src="https://s8.uupload.ir/files/green_uvgx.png" alt="green-theme" width="300" height="200">
 
 
 ## License
