@@ -1,18 +1,18 @@
 import React from 'react'
+
 import { DataTable } from 'react-table-modal'
 import 'react-table-modal/dist/index.css'
 
 const App = () => {
   return (
     <DataTable
-      theme="red"
-      editButton={true}
-      editField={["name", "family", "retired"]}
-      deleteButton={true}
-      cols={["name", "family", "retired"]}
-      rowsPerPage={5}
-      data={[
-        { name: "Ronaldo", family: "Nazário", retired: 'Yes' },
+        theme="default"
+        editButton={true}
+        editField={["name", "family", "retired"]}
+        deleteButton={true}
+        cols={["name", "family", "retired"]}
+        data={[
+          { name: "Ronaldo", family: "Nazário", retired: 'Yes' },
           { name: "Zinedine", family: "Zidane", retired: 'Yes' },
           { name: "Diego", family: "Maradona", retired: 'Yes' },
           { name: "Franz", family: "Beckenbauer", retired: 'Yes' },
@@ -58,8 +58,9 @@ const App = () => {
           { name: "Andres", family: "Iniesta", retired: 'Yes' },
           { name: "Lev", family: "Yashin", retired: 'Yes' },
           { name: "Yuto", family: "Nagatomo", retired: 'No' },
-      ]}
-    />
+        ]}
+        rowsPerPage={5}
+      />
   )
 }
 

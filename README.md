@@ -125,6 +125,15 @@ Below are examples of the available themes along with their respective class nam
 <img src="https://s8.uupload.ir/files/green_uvgx.png" alt="green-theme" width="300" height="200">
 
 
+## Demos
+
+There are several demos hosted on CodePen which demonstrate various features of react-table-modal:
+
+* [First Example](https://codepen.io/alireza-ramzanpour/pen/QWXEBZK)
+* [Second Example](https://codepen.io/alireza-ramzanpour/pen/QWXEBZK)
+* [Third Example](https://codepen.io/alireza-ramzanpour/pen/QWXEBZK)
+
+
 ## License
 
 MIT © [alireza-ramzanpour](https://github.com/alireza-ramzanpour)
